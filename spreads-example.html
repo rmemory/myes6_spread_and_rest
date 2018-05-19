@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The ...Spread Operator</title>
+  <style>
+    body {
+	  font-size: 50px;
+      color:white;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+      min-height: 100vh;
+      font-family: sans-serif;
+      background: #ffc600;
+      text-transform: uppercase;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+	
+    .jump span {
+      display: inline-block;
+      transition: transform 0.2s;
+      cursor:url('http://csscursor.info/source/santahand.png'), default;
+    }
+    .jump span:hover {
+      transform: translateY(-20px) rotate(10deg) scale(2);
+    }
+  </style>
+</head>
+<body>
+  <h2 class="jump">SPREADS!</h2>
+
+<script>
+  const heading = document.querySelector(".jump");
+  heading.innerHTML = wrapSpan(heading.textContent);
+
+  function wrapSpan(aString) {
+	  return [...aString].map(letter => `<span>${letter}</span>`).join('');
+  }
+
+
+  // Different examples
+
+  const inventors = ['Einstein', 'Newton', 'Galileo'];
+  const newInventors = ['Musk', 'Jobs'];
+  inventors.push(...newInventors);
+  console.log(inventors);
+
+  // Another one, spreading into a function
+  const name = ['Richard', 'Memory'];
+
+  function sayHi(first, last) {
+    alert(`Hey there ${first} ${last}`);
+  }
+
+  sayHi(...name);
+</script>
+</body>
+</html>
